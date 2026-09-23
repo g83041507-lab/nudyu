@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fff1d7">
+  <meta name="description" content="ค้นหาสินค้า เลือกรายการ และส่งเข้าชีตพร้อมเลขบาร์โค้ด">
+  <title>ช่วยสั่งของ</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2318392b'/%3E%3Cpath d='M17 21h30l-3 24H20z' fill='%23f8d36a'/%3E%3Cpath d='M25 26v-5a7 7 0 0 1 14 0v5' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <p class="eyebrow">ORDER HELPER</p>
+      <h1>ช่วยสั่งของ</h1>
+    </div>
+    <button id="clearAll" class="ghost" type="button">ล้างรายการ</button>
+  </header>
+
+  <main>
+    <section class="search-panel" aria-labelledby="searchTitle">
+      <div class="step"><span>1</span><div><h2 id="searchTitle">หาสินค้าที่จะสั่ง</h2><p>เลือกหมวด หรือพิมพ์ชื่อและบาร์โค้ด</p></div></div>
+      <div class="search-wrap">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.3-4.3m2.3-5.2a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+        <input id="search" type="search" autocomplete="off" placeholder="เช่น ขนม นม กาแฟ หรือ 885071..." aria-label="ค้นหาสินค้า">
+        <kbd>/</kbd>
+      </div>
+      <div id="categories" class="categories" aria-label="หมวดหมู่สินค้า"></div>
+      <div id="results" class="results" aria-live="polite"></div>
+    </section>
+
+    <section class="cart-panel" aria-labelledby="cartTitle">
+      <div class="step"><span>2</span><div><h2 id="cartTitle">รายการที่จะสั่ง</h2><p id="cartCount">ยังไม่มีสินค้า</p></div></div>
+      <div id="cart" class="cart"></div>
+      <div id="empty" class="empty">
+        <div class="empty-icon">🧺</div>
+        <strong>ยังไม่มีของในรายการ</strong>
+        <p>ค้นหาด้านบนแล้วกดเพิ่มได้เลย</p>
+      </div>
+    </section>
+  </main>
+
+  <aside id="checkout" class="checkout" hidden>
+    <div><small>รวมทั้งหมด</small><strong id="totalQty">0 รายการ</strong></div>
+    <div class="checkout-actions">
+      <button id="copyOrder" class="copy-button" type="button">คัดลอก</button>
+      <button id="sendSheet" type="button">ส่งเข้าชีต</button>
+    </div>
+  </aside>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
